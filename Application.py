@@ -31,10 +31,10 @@ def log():
     
 #------------------------------------
 
-access_token='######################################'
-access_secret='#####################################'
-consumer_key='#####################################'
-consumer_secret='#####################################'
+access_token=input("Access token:")
+access_secret=input("Access secret:")
+consumer_key=input("Consumer key:")
+consumer_secret=input("Consumer secret:")
 
 auth = OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_secret)
@@ -71,7 +71,7 @@ def post_to_blogger_from_twitter_user(username):
             break
         #an einai agglika
         abcd=False
-        apag_lekseis = ['Ευχαριστ','τουι','τουί','ρτ','Καλημέρα','βοήθεια','βοηθεια','Τουί','Τουι','ακάου','Πέθανε','ανεγκέφ','ακαου','πέθανε','Εκλαπη','Εκλάπη','κοινοποι','πολιτ','νοσοκομ','αναπήρ','ντιεμ']
+        apag_lekseis = ['fuck','bull','shit']
         for word in apag_lekseis:
            if re_tweet_text.find(word)!=-1:
                 abcd=True
@@ -85,8 +85,8 @@ def post_to_blogger_from_twitter_user(username):
         #end of restrictions
         
         #changes
-        re_tweet_text=re_tweet_text.replace('&amp;','και')
-        re_tweet_text=re_tweet_text.replace('ναπουμε','')
+        #re_tweet_text=re_tweet_text.replace('&amp;','και')
+
         #if is in status.txt continue (if is posted)
         if re_tweet_text in open('status.txt', 'r',encoding="utf8").read():
             continue
@@ -100,19 +100,15 @@ def post_to_blogger_from_twitter_user(username):
             print(re_tweet_text.translate(non_bmp_map))
             
 #### MAIN PROGRAM ####
-username = raw_input("Blogger Username:")
-password = raw_input("Blogger Password:")
+username = input("Blogger Username:")
+password = input("Blogger Password:")
 blogger=auto_posting.BloggerBot(username, password)
 blogger.login()
 
 # ---AFTER LOGGED IN
-list_of_users=['@stls92','@bloody_pantzari', \
-               '@adiasistos','@demexereis','@Batzalakos','@Kentavros_Eirwn','@best___TWEETS', \
-               '@La_cookaracha','@eVaN_GiAn','@theodorosunny','@N_Liviti',  \
-               '@el__el__ant','@alexdom2','@ogunner','@MrsSourjelo‏','@Sampsonius_','@StefanosNtampos', \
-               '@natou92121','@fouiter','@Lampatzampa','@Groupteamlogist', \
-               '@pennyd36','@to_vatraxi','@Partalia','@akispanagiot','@AniatiPeriptosi', \
-               '@_bourdas','@beeroas','@PouNaStaLeo','@AchillesFT','@baggelas']
+list_of_users=['@katyperry','@justinbieber', \
+               '@BarackObama','@rihanna','@taylorswift13', \
+               '@ladygaga','@TheEllenShow','@YouTube']
 for user in list_of_users:
     print ("**** USER: ",user," ***")
     try:
